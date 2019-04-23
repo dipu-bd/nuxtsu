@@ -1,21 +1,26 @@
-export default {
+import NuxtConfiguration from '@nuxt/config'
+
+const config: NuxtConfiguration = {
   env: {},
   head: {
-    title: "nuxtsu",
+    title: 'nuxtsu',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "A template based on Nuxt with full typescript support for both client and server side" }
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'A template based on Nuxt with full typescript support for both client and server side',
+      },
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  loading: { color: "#3B8070" },
-  css: ["~/assets/css/main.css"],
+  loading: { color: '#3B8070' },
+  css: ['~/assets/css/main.css'],
   build: {},
-  modules: [
-    "@nuxtjs/axios",
-  ],
-  axios: {}
+  modules: ['@nuxtjs/axios'],
+  axios: {},
 }
+
+export default config

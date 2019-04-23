@@ -3,11 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": [
-      "esnext",
-      "esnext.asynciterable",
-      "dom"
-    ],
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "allowJs": true,
@@ -21,10 +17,6 @@
     "paths": {
       "~/*": ["./*"]
     },
-    "types": [
-      "@nuxt/vue-app",
-      "@types/node",
-      "@types/webpack-env"
-    ]
+    "types": ["@nuxt/vue-app", "@types/node", "@types/webpack-env"]
   }
 }
