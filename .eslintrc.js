@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
     node: true,
+    browser: true,
   },
   plugins: ['@typescript-eslint', 'prettier'],
   parserOptions: {
@@ -10,13 +10,31 @@ module.exports = {
   },
   extends: ['@nuxtjs'],
   rules: {
-    '@typescript-eslint/no-unused-vars': 'off',
-    'no-unused-vars': 'off',
-    'arrow-parens': 'off',
-    'generator-star-spacing': 'off',
-    'space-before-function-paren': 'off',
-    // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'comma-dangle': ['error', 'always-multiline'],
+    // https://eslint.org/docs/rules/no-unused-vars
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { vars: 'all', args: 'none', ignoreRestSiblings: false },
+    ],
+
+    // https://eslint.org/docs/rules/comma-dangle
+    'comma-dangle': ['error', 'only-multiline'],
+
+    // https://eslint.org/docs/rules/arrow-parens
+    'arrow-parens': ['error', 'always'],
+
+    // https://eslint.org/docs/rules/generator-star-spacing
+    'generator-star-spacing': ['error', { before: true, after: false }],
+
+    // https://eslint.org/docs/rules/space-before-function-paren
+    'space-before-function-paren': [
+      'error',
+      { anonymous: 'always', named: 'never', asyncArrow: 'always' },
+    ],
+
+    // https://eslint.org/docs/rules/no-console
+    'no-console': ['error', { allow: ['log', 'warn', 'error'] }],
+
+    // https://eslint.org/docs/rules/no-debugger
+    'no-debugger': 'error',
   },
 }

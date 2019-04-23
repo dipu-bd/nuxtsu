@@ -1,44 +1,49 @@
 import chalk from 'chalk'
 import express from 'express'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import compression from 'compression'
 import { Nuxt, Builder } from 'nuxt'
 
+// Configure Nuxt client
 import config from '../nuxt.config'
-
-// Import and Set Nuxt.js options
 config.dev = !(process.env.NODE_ENV === 'production')
 
-// Configure server
-const app = express()
-
-// Init Nuxt.js
 const nuxt = new Nuxt(config)
-nuxt.error = err => {
+nuxt.error = (err) => {
   console.log(chalk.dim(err.stack))
 }
 
-// Give nuxt middleware to express
-app.use(nuxt.render)
-
-// Get configs
-const host: string = process.env.HOST || '0.0.0.0'
-const port: number = Number(process.env.PORT) || 3000
-
-// Listen the http server
-app.listen(port, host, err => {
-  if (err) {
-    return console.log(chalk.dim(err.stack))
-  }
-  console.log(
-    '\n',
-    chalk.bgGreen('SERVER RUNNING'),
-    chalk.blueBright('@'),
-    chalk.underline(`http://${host}:${port}`),
-    '\n',
-  )
-})
-
-// Build only in dev mode
+// Build Nuxt in dev mode
 if (config.dev) {
   const builder = new Builder(nuxt)
   builder.build()
 }
+
+// Configure Express server
+const app: express.Express = express()
+
+app.use(compression())
+app.use(bodyParser.json())
+app.use(cookieParser(process.env.COOKIE_SECRET))
+
+app.use(nuxt.render)
+
+// Run the server
+const host: string = process.env.HOST || '0.0.0.0'
+const port: number = Number(process.env.PORT) || 3000
+
+app.listen(port, host, (err) => {
+  if (err) {
+    console.log(chalk.dim(err.stack))
+  } else {
+    console.log(
+      '\n%s %s %s\n',
+      chalk.bgGreen(chalk.black(' SERVER RUNNING ')),
+      chalk.green('@'),
+      chalk.green(`http://${host}:${port}`)
+    )
+  }
+})
+
+export default app
