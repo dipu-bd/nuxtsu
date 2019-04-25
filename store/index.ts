@@ -1,5 +1,4 @@
-import { Person } from '~/types'
-import { RootState } from '~/types/state'
+import { Person, RootState } from '~/types'
 import { MutationTree, ActionTree } from 'vuex'
 
 export const state = (): RootState => ({

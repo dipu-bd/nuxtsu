@@ -17,6 +17,11 @@
     "paths": {
       "~/*": ["./*"]
     },
-    "types": ["@nuxt/vue-app", "@types/node", "@types/webpack-env"]
+    "types": [
+      "@nuxt/vue-app",
+      "@types/node",
+      "@types/webpack-env",
+      "./types/index"
+    ]
   }
 }

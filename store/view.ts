@@ -1,4 +1,4 @@
-import { ViewState, RootState } from '~/types/state'
+import { ViewState, RootState } from '~/types'
 import { MutationTree, ActionTree, GetterTree } from 'vuex'
 
 export const state = (): ViewState => ({
