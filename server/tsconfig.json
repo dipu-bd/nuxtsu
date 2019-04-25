@@ -11,8 +11,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@/*": ["../*"]
     },
-    "types": ["@types/node", "@types/webpack-env"]
+    "types": ["@types/node"]
   }
 }

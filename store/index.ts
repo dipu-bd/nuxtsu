@@ -1,6 +1,6 @@
-import { RootState, Person } from '~/types'
+import { Person } from '~/types'
+import { RootState } from '~/types/state'
 import { MutationTree, ActionTree } from 'vuex'
-import localRandomData from '~/static/random-data.json'
 
 export const state = (): RootState => ({
   people: [],
@@ -14,13 +14,7 @@ export const mutations: MutationTree<RootState> = {
 
 export const actions: ActionTree<RootState, RootState> = {
   async nuxtServerInit({ commit }, context) {
-    let people: Person[] = []
-
-    // If you serve the site statically with `nuxt generate`, you can't use HTTP requests for local
-    people = context.isStatic
-      ? localRandomData
-      : await context.app.$axios.$get('./random-data.json')
-
-    commit('setPeople', people.slice(0, 10))
+    const people = await context.app.$axios.$get('/api/random-data')
+    commit('setPeople', people)
   },
 }

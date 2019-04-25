@@ -5,12 +5,14 @@ import cookieParser from 'cookie-parser'
 import compression from 'compression'
 import { Nuxt, Builder } from 'nuxt'
 
-// Configure Nuxt client
 import config from '../nuxt.config'
+import router from './routes'
+
+// Configure Nuxt client
 config.dev = !(process.env.NODE_ENV === 'production')
 
 const nuxt = new Nuxt(config)
-nuxt.error = (err) => {
+nuxt.error = (err: Error) => {
   console.log(chalk.dim(err.stack))
 }
 
@@ -27,6 +29,8 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 
+// Add server routing
+app.use(router)
 app.use(nuxt.render)
 
 // Run the server
@@ -41,7 +45,7 @@ app.listen(port, host, (err) => {
       '\n%s %s %s\n',
       chalk.bgGreen(chalk.black(' SERVER RUNNING ')),
       chalk.green('@'),
-      chalk.green(`http://${host}:${port}`)
+      chalk.green(`http://${host}:${port}`),
     )
   }
 })

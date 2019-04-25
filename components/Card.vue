@@ -1,8 +1,14 @@
 <template>
-  <div class="card">
-    <h2 />
-    <img :src="'https://robohash.org/' + person.first_name + '_' + person.last_name">
-  </div>
+  <v-card class="mx-2 my-4" width="300px">
+    <v-card-title>
+      <h1 class="title">{{person.first_name}} {{person.last_name}}</h1>
+    </v-card-title>
+    <v-img
+      :src="'https://robohash.org/' + person.first_name + '_' + person.last_name"
+      :lazy-src="'https://robohash.org/' + person.first_name + '_' + person.last_name"
+      height="300px"
+    />
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -15,11 +21,10 @@ export default class Card extends Vue {
 }
 </script>
 
-<style scoped>
-.card {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 1rem;
-  margin: 0.25rem;
-  border: 0.25rem solid gainsboro;
+<style lang="stylus" scoped>
+h1 {
+  width: 100%;
+  font-weight: 300;
+  text-align: center;
 }
 </style>

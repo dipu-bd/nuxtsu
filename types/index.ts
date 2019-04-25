@@ -1,9 +1,7 @@
-export * from './state'
-
 export interface Person {
   id: number
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   contact: Contact
   gender: string
   ipAddress: string

@@ -1,8 +1,8 @@
 <template lang="pug">
-  section
-    h1.header Nuxt TypeScript Starter
-    div.cards
-      Card(v-for="person in people" :key="person.id" :person="person")
+  v-container.container(fluid fill-height)
+    v-layout.layout(align-center justify-center)
+      v-flex.xs-4(v-for="person in people" :key="person.id")
+        Card(:person="person")
 </template>
 
 <script lang="ts">
@@ -12,22 +12,23 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import Card from '~/components/Card.vue'
 
 @Component({
+  layout: 'vuetify',
   components: {
     Card,
   },
 })
 export default class extends Vue {
+  auth = false
+  layout = 'vuetify'
   @State people: Person
 }
 </script>
 
-<style lang="stylus" scoped>
-.header {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<style scoped>
+.container {
+  background: #eee;
 }
-
-.cards {
-  display: flex;
+.layout {
   flex-wrap: wrap;
 }
 </style>

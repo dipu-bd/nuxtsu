@@ -17,7 +17,7 @@ module.exports = {
     ],
 
     // https://eslint.org/docs/rules/comma-dangle
-    'comma-dangle': ['error', 'only-multiline'],
+    'comma-dangle': ['error', 'always-multiline'],
 
     // https://eslint.org/docs/rules/arrow-parens
     'arrow-parens': ['error', 'always'],
