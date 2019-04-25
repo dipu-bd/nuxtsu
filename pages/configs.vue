@@ -6,7 +6,5 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
-export default class extends Vue {
-  auth = false
-}
+export default class extends Vue {}
 </script>

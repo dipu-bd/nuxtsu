@@ -13,14 +13,14 @@ import Card from '~/components/Card.vue'
 
 @Component({
   layout: 'vuetify',
+  scrollToTop: true,
   components: {
     Card,
   },
 })
 export default class extends Vue {
-  auth = false
-  layout = 'vuetify'
   @State people: Person
+  auth = false
 }
 </script>
 
